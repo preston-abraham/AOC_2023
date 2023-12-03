@@ -63,6 +63,7 @@ function gear_ratio(point)
 end
 
 
+all_coords = [(x,y) for x in range(1,140) for y in range(1,140)]
 
 numbers = []
 number_coords = []
