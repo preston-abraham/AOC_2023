@@ -5,15 +5,6 @@ cards = split.(cards,"|")
 player_numbers = [filter!(e->e != "",split(c[1]," ")) for c in cards]
 winning_numbers = [filter!(e->e != "",split(c[2]," ")) for c in cards]
 
-tot = 0
-for i in range(1,size(player_numbers)[1])
-    matches = size(findall(in(winning_numbers[i]),player_numbers[i]))[1]
-    if matches > 0
-        tot += (2 ^ (matches - 1))
-    end
-end
-tot
-
 function score(card_index)
     matches = size(findall(in(winning_numbers[card_index]),player_numbers[card_index]))[1]
     if matches > 0
@@ -25,7 +16,6 @@ end
 function raw_score(card_index)
     return size(findall(in(winning_numbers[card_index]),player_numbers[card_index]))[1]
 end
-
 
 function extra_cards(index)
     points = raw_score(index)
