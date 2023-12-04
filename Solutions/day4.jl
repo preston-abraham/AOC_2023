@@ -1,7 +1,6 @@
 input = open(io->read(io, String), "inputs/day4.txt")
 lines = split.(split(input,"\n"),":")
-cards = [i[2] for i in lines]
-cards = split.(cards,"|")
+cards = split.([i[2] for i in lines],"|")
 player_numbers = [filter!(e->e != "",split(c[1]," ")) for c in cards]
 winning_numbers = [filter!(e->e != "",split(c[2]," ")) for c in cards]
 
@@ -32,5 +31,5 @@ for i in range(1,206)
         number_of_copies[card] += copies
     end
 end
+
 print(String("\nPart 2: $(sum(number_of_copies))"))
-        
