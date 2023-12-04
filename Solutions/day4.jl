@@ -24,7 +24,6 @@ end
 
 print(String("Part 1: $(sum(score.(range(1,206))))"))
 
-cards_to_evaluate = [i for i in range(1,206)]
 number_of_copies = [1 for i in range(1,206)]
 for i in range(1,206)
     copies = number_of_copies[i]
