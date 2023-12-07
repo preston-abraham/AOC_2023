@@ -65,26 +65,15 @@ end
 
 function card_is_less(card1,card2)
     
-    if values[card_type(card1)] < values[card_type(card2)]
-        return true
+    if !(values[card_type(card1)] == values[card_type(card2)])
+        return values[card_type(card1)] < values[card_type(card2)]
     end
-    
-    if values[card_type(card1)] > values[card_type(card2)]
-        return false
-    end
-    
     for i in range(1,5)
-        
-        if card_values[card1[i]] < card_values[card2[i]]
-            return true
-        end
-        
-        if card_values[card1[i]] > card_values[card2[i]]
-            return false
+        if !(card_values[card1[i]] == card_values[card2[i]])
+            return card_values[card1[i]] < card_values[card2[i]]
         end
     end
-    
-    return "error"
+    return false
 end
 
 cards_p1 = replace.(cards,"J"=>"X")
