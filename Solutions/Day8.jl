@@ -20,7 +20,7 @@ function steps_to_goal(current,dests)
 end
 print(String("Part 1: $(steps_to_goal("AAA",["ZZZ"]))"))
 
-starts = join.(filter(e->e[3] == "A",[i for i in split.(keys(paths),"")]))
-goals = join.(filter(e->e[3] == "Z",[i for i in split.(keys(paths),"")]))
+starts = join.(filter(e->e[3] == "A",split.(keys(paths),"")))
+goals = join.(filter(e->e[3] == "Z",split.(keys(paths),"")))
 cycles = [steps_to_goal(s, goals) for s in starts]
 print(String("\nPart 2: $(lcm(cycles))"))
