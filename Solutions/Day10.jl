@@ -1,10 +1,11 @@
 input = open(io->read(io, String), "inputs/day10.txt")
 lines = split.(split(input,"\n"),"")
 
+input_size = (size(lines)[1],size(lines[1])[1])
 
 function find_start_point(lines)
-    for i in range(1,size(lines)[1])
-        for j in range(1,size(lines[1])[1])
+    for i in range(1,input_size[1])
+        for j in range(1,input_size[2])
             if lines[i][j] == "S"
                 return((i,j))
             end
@@ -65,17 +66,12 @@ print(String("\nPart 1: $(size(loop)[1] ÷ 2 + (size(loop)[1] % 2))"))
 
 in_loop = false
 in_loop_points = []
-for i in range(1,size(lines)[1])
-    for j in range(1,size(lines[1])[1])
+for i in range(1,input_size[1])
+    for j in range(1,input_size[2])
         if in_loop && (i,j) ∉ loop
             push!(in_loop_points,(i,j))
-        end
-        if (i,j) ∈ loop && lines[i][j] ∈ ["|","F","7"]
-            if in_loop
-                in_loop = false
-            else
-                in_loop = true
-            end
+        elseif (i,j) ∈ loop && lines[i][j] ∈ ["|","F","7"]
+            in_loop = !in_loop
         end
     end
 end
