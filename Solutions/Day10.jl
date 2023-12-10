@@ -70,7 +70,7 @@ for i in range(1,size(lines)[1])
         if in_loop && (i,j) ∉ loop
             push!(in_loop_points,(i,j))
         end
-        if (i,j) ∈ loop && lines[i][j] ∈ ["|","J","L"]
+        if (i,j) ∈ loop && lines[i][j] ∈ ["|","F","7"]
             if in_loop
                 in_loop = false
             else
