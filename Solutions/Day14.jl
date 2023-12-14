@@ -10,7 +10,6 @@ function p1_split(map)
     return split_rocks
 end
 
-
 function cycle(split_rocks)
     for n in 1:4
         rocks = join.(reverse.([[c[i] for c in split_rocks] for i in 1:size(split_rocks)[1]]))
