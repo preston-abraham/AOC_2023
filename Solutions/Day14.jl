@@ -12,9 +12,13 @@ end
 
 function cycle(split_rocks)
     for n in 1:4
+        # Rotate clockwise
         rocks = join.(reverse.([[c[i] for c in split_rocks] for i in 1:size(split_rocks)[1]]))
+        # Split on # to find subsections
         split_rocks = split.(rocks,"#")
+        # Sort now puts the O's at the end -- Add back the #
         split_rocks = [[vcat(sort(split(i,"")),["#"]) for i in r] for r in split_rocks]
+        # Filter out "" elements from where there were # beside each other, then re-combine lines
         split_rocks = [filter(e -> e != "", collect(Iterators.flatten(i))) for i in split_rocks]
     end
     return split_rocks
